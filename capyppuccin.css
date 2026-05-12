@@ -492,6 +492,18 @@ a.form__button--filled.form__button--centered:hover {
   color: var(--cp-base);
 }
 
+/* In-place <button> action buttons (Marcar lidas, Limpar caixa, etc.):
+ * default sits 1 tone down at --cp-honey (richer/slightly muted) so the
+ * panel reads with more depth. Hover rises to --cp-yellow (brand primary)
+ * — same tone as anchor-button hover, creating a clear "lift" on interaction. */
+button.form__button--filled.form__button--centered {
+  background: var(--cp-honey);
+  color: var(--cp-base);
+}
+button.form__button--filled.form__button--centered:hover {
+  background: var(--cp-yellow);
+}
+
 /* === Panel tabs ===
  * Used for the in-panel tab strip (inbox: "Tudo / Marcar como lida /
  * Caixa de entrada / Caixa de saída", and similar). Upstream hardcodes
