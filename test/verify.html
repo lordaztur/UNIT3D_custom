@@ -3,6 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Simulate UNIT3D's production Content Security Policy so any directive
+     our CSS would violate on a live tracker (e.g., @import of an external
+     font CDN, woff2 from an unauthorized origin) is caught locally instead
+     of only on deploy. style-src + font-src mirror the allowlist the
+     `capybarabr.com` tracker uses. -->
+<!-- The schemes (`https://`) are explicit so the policy matches correctly when
+     the file is opened via file:// in the local validator. Chromium's
+     scheme-less wildcards (`*.github.io`) only inherit the document's scheme
+     for non-file origins; on file://, they silently miss https:// resources.
+     Production tracker loads this over HTTPS so its bare `*.github.io` policy
+     works there — we add the scheme here only to mirror that behavior locally. -->
+<meta http-equiv="Content-Security-Policy" content="style-src 'self' 'unsafe-inline' https://gitcdn.xyz https://github.io https://*.github.io https://github.com; font-src 'self' data: https://gitcdn.xyz https://github.io https://*.github.io https://github.com; img-src 'self' data: blob: https://gitcdn.xyz https://github.io https://*.github.io https://github.com">
+<script>
+  // Register CSP listener BEFORE <link> tags load so we catch stylesheet
+  // violations during initial parsing (which fire before any body script).
+  window.__cspViolations = [];
+  document.addEventListener('securitypolicyviolation', (e) => {
+    window.__cspViolations.push(`${e.violatedDirective} blocked ${e.blockedURI || '(inline)'}`);
+  });
+</script>
 <title>Capyppuccin — Verification</title>
 <link rel="stylesheet" href="../material-design-v3-dark.css">
 <link rel="stylesheet" href="../capyppuccin.css">
@@ -51,6 +71,13 @@
   function cssVar(name, el) {
     // Collapse whitespace so shadow assertions (which contain spaces inside rgba()) compare reliably across browsers.
     return getComputedStyle(el || document.documentElement).getPropertyValue(name).trim().replace(/\s+/g, ' ');
+  }
+
+  // CSP violations captured by the head-script listener (registered before
+  // <link> tags). Surface each as a failed assertion so validate.js picks
+  // them up automatically.
+  for (const v of (window.__cspViolations || [])) {
+    assert('CSP violation', v, '(none)');
   }
 
   // Token-layer assertions (always run — verify Task 2 scaffold)
