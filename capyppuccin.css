@@ -471,19 +471,23 @@ a:focus {
   accent-color: var(--cp-yellow);
 }
 
-/* === Action panel buttons (inverted) ===
- * `.form__button--filled.form__button--centered` is the combo UNIT3D uses
- * for sidebar action buttons (Nova Mensagem, Marca como lida, Excluir, etc.).
- * Default filled style is yellow-bg + dark-text which feels heavy when
- * stacked 3-4 in a narrow side panel. Invert to surface bg + yellow text +
- * yellow border — reads as part of the panel, with the brand color carrying
- * the meaning. Hover fills back to solid yellow for a clear "press me" cue. */
-.form__button--filled.form__button--centered {
+/* === Anchor-style action buttons (inverted) ===
+ * UNIT3D uses the same `.form__button--filled.form__button--centered` combo
+ * for both navigation-style action buttons (`<a href>` like "Nova Mensagem",
+ * which take you somewhere) and in-place action buttons (`<button>` like
+ * "Marcar como lida", which perform an action right there).
+ *
+ * Differentiate by element type: anchor variants get the inverted style
+ * (surface bg + yellow text + yellow border, reads as "go somewhere")
+ * while the `<button>` form keeps the default filled yellow (reads as
+ * "click to act"). Hover on the anchor variant fills back to solid yellow
+ * for a clear press cue. */
+a.form__button--filled.form__button--centered {
   background: var(--cp-surface-1);
   color: var(--cp-yellow);
   border: 1px solid var(--cp-yellow);
 }
-.form__button--filled.form__button--centered:hover {
+a.form__button--filled.form__button--centered:hover {
   background: var(--cp-yellow);
   color: var(--cp-base);
 }
