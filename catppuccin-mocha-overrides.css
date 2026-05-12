@@ -1,0 +1,63 @@
+/*!
+ * Catppuccin Mocha Override for UNIT3D Material Design v3 Dark
+ * https://github.com/gfrcr/UNIT3D_custom
+ *
+ * Load AFTER material-design-v3-dark.css:
+ *   <link rel="stylesheet" href="/css/material-design-v3-dark.css">
+ *   <link rel="stylesheet" href="/css/catppuccin-mocha-overrides.css">
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ============================================
+   * Design tokens — single source of truth
+   * Built blocks below remap UNIT3D variables to these.
+   * ============================================ */
+
+  /* Brand (yellow-dominant warm pastel) */
+  --cp-yellow:     #f9e2af;
+  --cp-cream:      #fef3a0;
+  --cp-peach:      #fab387;
+  --cp-rosewater:  #f5e0dc;
+
+  /* Surfaces (warm neutral charcoal — no purple undertone) */
+  --cp-base:       #161412;
+  --cp-mantle:     #0e0d0c;
+  --cp-surface-0:  #221f1c;
+  --cp-surface-1:  #2f2b27;
+
+  /* Text */
+  --cp-text:       #cdd6f4;
+  --cp-subtext:    #a6adc8;
+  --cp-overlay:    #6c7086;
+
+  /* Semantic */
+  --cp-green:      #a6e3a1;
+  --cp-red:        #f38ba8;
+  --cp-blue:       #89b4fa;
+  --cp-mauve:      #cba6f7;
+  --cp-teal:       #94e2d5;
+  --cp-pink:       #f5c2e7;
+
+  /* Shape scale */
+  --cp-radius-sm:  6px;
+  --cp-radius-md:  10px;
+  --cp-radius-lg:  14px;
+  --cp-radius-xl:  20px;
+
+  /* Shadow scale + focus glow (the only net-new UNIT3D var we add) */
+  --cp-shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.18);
+  --cp-shadow-md:  0 3px 10px rgba(0, 0, 0, 0.22);
+  --cp-shadow-lg:  0 6px 24px rgba(0, 0, 0, 0.28);
+  --shadow-glow:   0 0 0 3px rgba(249, 226, 175, 0.4);
+
+  /* Block 1 — Brand & action colors        (Task 3) */
+  /* Block 2 — Surfaces                     (Task 4) */
+  /* Block 3 — Text                         (Task 5) */
+  /* Block 4 — Semantic                     (Task 6) */
+  /* Block 5 — Border radii                 (Task 7) */
+  /* Block 6 — Shadows                      (Task 8) */
+}
+
+/* Block 7 — Global element overrides (typography + focus) — Task 9 */

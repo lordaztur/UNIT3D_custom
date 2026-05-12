@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Catppuccin Mocha Override — Verification</title>
+<link rel="stylesheet" href="../material-design-v3-dark.css">
+<link rel="stylesheet" href="../catppuccin-mocha-overrides.css">
+<style>
+  /* Do NOT set font-family on body here — Task 9 asserts the override applies Outfit to body. */
+  body { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+  h1, p { font-family: system-ui, sans-serif; } /* verifier UI uses system; body keeps Outfit from override */
+  .result { display: flex; align-items: center; gap: 12px; padding: 8px 14px; margin: 4px 0; border-radius: 6px; font-family: ui-monospace, monospace; font-size: 13px; }
+  .pass { background: #1f3b1f; color: #b6e6b6; }
+  .fail { background: #3b1f1f; color: #e6b6b6; }
+  .summary { font-size: 18px; font-weight: 700; padding: 12px 16px; border-radius: 8px; margin: 16px 0; }
+  .summary.ok { background: #1f3b1f; color: #b6e6b6; }
+  .summary.bad { background: #3b1f1f; color: #e6b6b6; }
+  code { background: rgba(255,255,255,0.06); padding: 1px 5px; border-radius: 3px; }
+  .probe { display: inline-block; padding: 6px 10px; border-radius: 4px; margin: 4px; }
+</style>
+</head>
+<body>
+<h1>Catppuccin Mocha Override — Verification</h1>
+<p>Loads <code>material-design-v3-dark.css</code> then <code>catppuccin-mocha-overrides.css</code> and asserts CSS variable values via <code>getComputedStyle()</code>.</p>
+<div id="summary" class="summary">Running...</div>
+<div id="results"></div>
+
+<!-- Probes — elements used for computed-style assertions in later tasks -->
+<div id="probes" style="position:absolute; left:-9999px;">
+  <div id="probe-body" style="background: var(--body-bg); color: var(--body-fg);"></div>
+  <div id="probe-panel" style="background: var(--panel-bg); border-radius: var(--panel-border-radius); box-shadow: var(--panel-box-shadow);"></div>
+  <button id="probe-button" style="background: var(--button-filled-bg); color: var(--button-filled-fg); border-radius: var(--button-filled-border-radius);"></button>
+  <span id="probe-seeders" style="color: var(--torrent-row-seeders-fg);"></span>
+  <span id="probe-leechers" style="color: var(--torrent-row-leechers-fg);"></span>
+</div>
+
+<script>
+  const results = document.getElementById('results');
+  const summary = document.getElementById('summary');
+  let passed = 0, failed = 0;
+
+  function assert(label, actual, expected) {
+    const ok = String(actual).trim() === String(expected).trim();
+    const div = document.createElement('div');
+    div.className = 'result ' + (ok ? 'pass' : 'fail');
+    div.innerHTML = `${ok ? '✓' : '✗'} <code>${label}</code> &mdash; got <code>${actual}</code>${ok ? '' : ` &mdash; expected <code>${expected}</code>`}`;
+    results.appendChild(div);
+    ok ? passed++ : failed++;
+  }
+
+  function cssVar(name, el) {
+    // Collapse whitespace so shadow assertions (which contain spaces inside rgba()) compare reliably across browsers.
+    return getComputedStyle(el || document.documentElement).getPropertyValue(name).trim().replace(/\s+/g, ' ');
+  }
+
+  // Token-layer assertions (always run — verify Task 2 scaffold)
+  assert('--cp-yellow', cssVar('--cp-yellow'), '#f9e2af');
+  assert('--cp-base', cssVar('--cp-base'), '#161412');
+  assert('--cp-text', cssVar('--cp-text'), '#cdd6f4');
+  assert('--cp-green', cssVar('--cp-green'), '#a6e3a1');
+
+  // === ADD BLOCK ASSERTIONS BELOW AS TASKS PROGRESS ===
+  // Task 3: brand mappings
+  // Task 4: surface mappings
+  // Task 5: text mappings
+  // Task 6: semantic mappings
+  // Task 7: radius mappings
+  // Task 8: shadow mappings
+  // Task 9: font-family
+
+  // Final summary
+  summary.textContent = `${passed} passed, ${failed} failed`;
+  summary.className = 'summary ' + (failed === 0 ? 'ok' : 'bad');
+</script>
+</body>
+</html>
