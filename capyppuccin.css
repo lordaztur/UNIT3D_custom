@@ -646,6 +646,120 @@ button.form__button--filled.form__button--centered:hover {
   color: var(--cp-subtext);
 }
 
+/* === Forum topic listing polish ===
+ * Same idea as forum index but for `.page__forum-topic--index` — the list
+ * of topics inside a forum (e.g., /forums/5). Uses `.topic-listing__*`
+ * classes instead of `.subforum-listing__*`. */
+
+/* Section heading ("Avisos Oficiais", etc.) — same yellow small-caps band. */
+.page__forum-topic--index .panel__heading,
+.page__forum-topic--index .panel__header-link {
+  color: var(--cp-yellow);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* Row hover + unread indicator (3px yellow stripe on the left of unread topics). */
+.topic-listings__item {
+  transition: background-color 0.12s ease;
+}
+.topic-listings__item:hover {
+  background-color: var(--cp-surface-1);
+}
+.topic-listing--unread {
+  border-left: 3px solid var(--cp-yellow);
+}
+.topic-listing--read {
+  border-left: 3px solid transparent;
+}
+
+/* Topic title link — yellow brand, hover cream. Read topics get muted. */
+.topic-listing__link {
+  color: var(--cp-yellow);
+}
+.topic-listing__link:hover {
+  color: var(--cp-cream);
+}
+.topic-listing--read .topic-listing__link {
+  color: var(--cp-subtext);
+}
+.topic-listing--read .topic-listing__link:hover {
+  color: var(--cp-yellow);
+}
+
+/* Meta on creation (author + datetime). */
+.topic-listing__created-author,
+.topic-listing__created-datetime,
+.topic-listing__created-link {
+  color: var(--cp-subtext);
+}
+.topic-listing__created-link:hover {
+  color: var(--cp-yellow);
+}
+
+/* Pin / lock icon column. */
+.topic-listing__icon {
+  color: var(--cp-honey);
+}
+.topic-listing__forum {
+  color: var(--cp-subtext);
+}
+
+/* Reply / view counts — same pattern as forum index stats. */
+.topic-listing__post-stats dd,
+.topic-listing__view-stats dd {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--cp-yellow);
+}
+.topic-listing__post-stats dt,
+.topic-listing__view-stats dt {
+  color: var(--cp-subtext);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+/* Latest post column. */
+.topic-listing__latest-author-link {
+  color: var(--cp-honey);
+  font-size: 12px;
+}
+.topic-listing__latest-author-link:hover {
+  color: var(--cp-cream);
+}
+.topic-listing__latest-datetime,
+.topic-listing__latest-post-link {
+  color: var(--cp-subtext);
+  font-size: 12px;
+}
+.topic-listing__latest-post-link:hover {
+  color: var(--cp-yellow);
+}
+
+/* Topic tags — main bundle hardcodes some less-than-ideal palettes (mustard
+ * fg on yellow bg for "invalid", magenta for "suggestion"). Lighten the
+ * vars to fit the brand. We don't repaint every tag (the per-status colors
+ * still carry semantic meaning); we just bring the worst clashes in line. */
+.topic-tag {
+  --forum-tag-implemented-bg: rgba(232, 197, 115, 0.18); /* honey wash */
+  --forum-tag-implemented-fg: var(--cp-honey);
+  --forum-tag-approved-bg: rgba(166, 227, 161, 0.18); /* green wash */
+  --forum-tag-approved-fg: var(--cp-green);
+  --forum-tag-suggestion-bg: rgba(245, 194, 231, 0.18); /* pink wash */
+  --forum-tag-suggestion-fg: var(--cp-pink);
+  --forum-tag-bug-bg: rgba(243, 139, 168, 0.18); /* red wash */
+  --forum-tag-bug-fg: var(--cp-red);
+  --forum-tag-solved-bg: rgba(203, 166, 247, 0.18); /* mauve wash */
+  --forum-tag-solved-fg: var(--cp-mauve);
+  --forum-tag-invalid-bg: rgba(184, 177, 160, 0.18); /* subtext wash */
+  --forum-tag-invalid-fg: var(--cp-subtext);
+  --forum-tag-denied-bg: rgba(243, 139, 168, 0.12);
+  --forum-tag-denied-fg: var(--cp-red);
+}
+
 /* === Search dropdown clipping fix ===
  * Both `.compact-search` (UNIT3D's wrapper around the search input) and
  * the legacy `.compact-search` style use `overflow: hidden` to clip the
