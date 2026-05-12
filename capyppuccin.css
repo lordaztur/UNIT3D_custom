@@ -692,18 +692,22 @@ button.form__button--filled.form__button--centered:hover {
   border-radius: var(--cp-radius-xl);
   overflow: hidden;
 }
-/* Round the whole header strip — both heading + actions sit inside it,
- * so this gives a clean continuous rounded band across the panel top. */
+/* Round only the TOP of the heading band — flat bottom so it merges with
+ * the panel body below. Most forum pages use bare .panel__heading as direct
+ * child of the panel; only .page__post--index wraps it in .panel__header
+ * (with sibling .panel__actions for the search bar). */
 :is(
     .page__forum--index,
     .page__forum-topic--index,
     .page__category-topic--index,
     .page__topic--index,
-    .page__post--index,
     .page__subscription--index
   )
   :is(.panel, .panelV2)
-  .panel__header {
+  .panel__heading {
+  border-radius: var(--cp-radius-xl) var(--cp-radius-xl) 0 0;
+}
+.page__post--index :is(.panel, .panelV2) .panel__header {
   border-radius: var(--cp-radius-xl) var(--cp-radius-xl) 0 0;
 }
 
