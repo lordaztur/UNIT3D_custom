@@ -95,7 +95,10 @@
   assert('--dialog-box-shadow', cssVar('--dialog-box-shadow'), '0 6px 24px rgba(0, 0, 0, 0.28)');
   assert('--top-nav-box-shadow', cssVar('--top-nav-box-shadow'), '0 1px 3px rgba(0, 0, 0, 0.18)');
   assert('--shadow-glow', cssVar('--shadow-glow'), '0 0 0 3px rgba(249, 226, 175, 0.4)');
-  // Task 9: font-family
+  // Task 9: font-family on body should list Outfit first
+  // Browsers may normalize quotes ('Outfit' → "Outfit") so strip them before comparing.
+  const bodyFont = getComputedStyle(document.body).fontFamily.replace(/['"]/g, '');
+  assert('body font-family lists Outfit first', bodyFont.startsWith('Outfit'), true);
 
   // Final summary
   summary.textContent = `${passed} passed, ${failed} failed`;

@@ -193,4 +193,31 @@
   --secondary-nav-tab-menu-box-shadow:  var(--cp-shadow-lg);
 }
 
-/* Block 7 — Global element overrides (typography + focus) — Task 9 */
+/* === Block 7 — Global element overrides ===
+ *  font-family is NOT tokenized by UNIT3D's base theme,
+ *  so we apply it on element selectors here.
+ */
+html,
+body,
+button,
+input,
+select,
+textarea {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+code,
+pre,
+kbd,
+samp,
+.hash,
+.size,
+.checksum,
+.font-mono {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+:focus-visible {
+  box-shadow: var(--shadow-glow);
+  outline: none;
+}
