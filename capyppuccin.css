@@ -243,7 +243,7 @@
   --top-nav-dropdown-menu-item-hover-bg: var(--cp-surface-1);
   --top-nav-dropdown-menu-item-icon-fg: var(--cp-base);
   --top-nav-dropdown-menu-item-icon-bg: var(
-    --cp-cream
+    --cp-honey
   ); /* decorative circle bg */
 
   /* Stats / ratio / toggle text — all #ebe2cf so clickable & non-clickable
@@ -453,39 +453,54 @@ samp,
   outline: none;
 }
 
-/* Override hardcoded blue links from the main UNIT3D bundle (`a { color: #4991f6 }`).
- * Convention: unvisited = darker --cp-gold, visited = lighter --cp-yellow.
- * Idea — links you've already clicked rise visually (the "already known"
- * branches) while unvisited stay quieter / wait to be discovered.
+/* === Link colors — contextual ===
  *
- * No !important on either — inline `style="color:..."` (UNIT3D usergroup
- * colors: admin red, mod green, etc.) must win. */
+ * Three layers so each context renders links the way it should:
+ *
+ * 1. DEFAULT (everywhere not listed below): `a` inherits its parent's
+ *    color. Footer "links at the end of the page", sidebar widgets,
+ *    random body links: read as plain text until hover. No
+ *    visited/unvisited differentiation.
+ *
+ * 2. TOP-NAV: UNIT3D's main bundle paints menu items via --top-nav-*
+ *    variables (handled in Block 2/3 above). The catch-all here forces
+ *    stray <a> elements (logo link, etc.) to --cp-text so the gold/yellow
+ *    from content rules below doesn't leak into the nav.
+ *
+ * 3. CONTENT AREAS (posts, comments, BBCode, inbox, notifications,
+ *    article cards, panel bodies): unvisited = --cp-yellow brand,
+ *    visited = --cp-honey (slightly muted) so you can see what's
+ *    already been opened. Add more selectors to the list if a context
+ *    needs the brand link treatment.
+ *
+ * Hover is universal: --cp-cream so interactivity is signaled in any
+ * context, including footer & sidebar. :not([style]) preserves
+ * usergroup-colored usernames (UNIT3D applies them via inline style). */
 a,
-a:link {
-  color: var(--cp-gold);
+a:link,
+a:visited {
+  color: inherit;
 }
 a:hover,
 a:focus {
   color: var(--cp-cream);
 }
-.top-nav__dropdown:hover > a,
-.top-nav__dropdown:focus-within > a {
-  color: var(--cp-yellow);
-}
 
-/* Defensive catch — any <a> inside the nav that doesn't already have a
- * UNIT3D-specific rule (e.g., .top-nav__dropdown > a, .top-nav__ratio-bar a)
- * would otherwise fall through to the generic gold above. Force it to
- * --cp-text (#ebe2cf) so the nav stays consistent. :where() keeps the
- * specificity low (0,1,0,1) so UNIT3D's per-component rules still win,
- * and :not([style]) preserves usergroup-colored usernames. */
+/* Top-nav stray links → text color (logo, anything without a UNIT3D class). */
 :where(.top-nav) a:not([style]) {
   color: var(--cp-text);
 }
 
-/* Visited links: lighter --cp-yellow. Scoped to content containers only so
- * nav links with hardcoded brand colors (Telegram cyan, etc.) keep theirs.
- * :not([style]) preserves usergroup-colored usernames. */
+/* Content areas: opt-in brand colors with visited differentiation. */
+.bbcode-rendered a:not([style]),
+.panel__body a:not([style]),
+.post a:not([style]),
+.comment__content a:not([style]),
+.notification a:not([style]),
+.article-card a:not([style]),
+.message a:not([style]) {
+  color: var(--cp-yellow);
+}
 .bbcode-rendered a:visited:not([style]),
 .panel__body a:visited:not([style]),
 .post a:visited:not([style]),
@@ -493,7 +508,7 @@ a:focus {
 .notification a:visited:not([style]),
 .article-card a:visited:not([style]),
 .message a:visited:not([style]) {
-  color: var(--cp-yellow);
+  color: var(--cp-honey);
 }
 
 /* Native form controls (checkbox, radio, progress, range) — `accent-color`
@@ -534,6 +549,23 @@ button.form__button--filled.form__button--centered {
 }
 button.form__button--filled.form__button--centered:hover {
   background: var(--cp-honey);
+}
+
+/* === Search dropdown clipping fix ===
+ * Both `.compact-search` (UNIT3D's wrapper around the search input) and
+ * the legacy `.compact-search` style use `overflow: hidden` to clip the
+ * input's rounded corners. That also clips any absolutely-positioned
+ * dropdown (search results) from escaping below the navbar. Switch to
+ * `overflow: visible` and let the input element itself carry the
+ * border-radius — its own `border-radius` is enough to shape the input
+ * without needing the container to clip. Bump z-index on the results
+ * so they layer above subsequent page content. */
+.compact-search,
+.quick-search {
+  overflow: visible;
+}
+.quick-search__results {
+  z-index: 1000;
 }
 
 /* === Top-nav alert badge ===
