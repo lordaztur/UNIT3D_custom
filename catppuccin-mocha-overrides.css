@@ -132,7 +132,44 @@
   --bbcode-rendered-danger-fg:      var(--cp-red);
   --bbcode-rendered-accent-fg:      var(--cp-mauve);
   --bbcode-rendered-accent-emphasis: var(--cp-mauve);
-  /* Block 5 — Border radii                 (Task 7) */
+  /* === Block 5 — Border radii ===
+   *  sm  6px  badges, small chips
+   *  md  10px buttons, inputs, dropdowns
+   *  lg  14px cards, panels, dialogs
+   *  xl  20px avatars, hero, big modals
+   */
+
+  /* md — buttons, inputs */
+  --button-filled-border-radius:        var(--cp-radius-md);
+  --button-outlined-border-radius:      var(--cp-radius-md);
+  --button-text-border-radius:          var(--cp-radius-md);
+  --icon-button-border-radius:          var(--cp-radius-md);
+  --input-text-border-radius:           var(--cp-radius-md);
+  --textarea-border-radius:             var(--cp-radius-md);
+  --select-border-radius:               var(--cp-radius-md);
+  --bbcode-input-border-radius:         var(--cp-radius-md);
+  --compact-search-border-radius:       var(--cp-radius-md);
+  --quick-search-border-radius:         var(--cp-radius-md);
+  --paginate-border-radius:             var(--cp-radius-md);
+
+  /* lg — cards, panels, dialogs */
+  --panel-border-radius:                var(--cp-radius-lg);
+  --panel-body-border-radius:           var(--cp-radius-lg);
+  --panel-head-border-radius:           var(--cp-radius-lg);
+  --dialog-border-radius:               var(--cp-radius-lg);
+  --mediahub-card-border-radius:        var(--cp-radius-lg);
+  --playlist-card-border-radius:        var(--cp-radius-lg);
+  --key-value-border-radius:            var(--cp-radius-lg);
+  --fieldset-border-radius:             var(--cp-radius-lg);
+  --legend-border-radius:               var(--cp-radius-lg);
+  --data-table-border-radius:           var(--cp-radius-lg);
+  --prize-border-radius:                var(--cp-radius-lg);
+  --top-nav-dropdown-menu-border-radius: var(--cp-radius-lg);
+  --secondary-nav-tab-menu-border-radius: var(--cp-radius-lg);
+
+  /* xl — circular/large */
+  --top-nav-icon-bar-icon-border-radius:   var(--cp-radius-xl);
+  --quick-search-result-image-border-radius: var(--cp-radius-xl);
   /* Block 6 — Shadows                      (Task 8) */
 }
 
