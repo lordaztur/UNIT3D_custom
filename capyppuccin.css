@@ -677,14 +677,10 @@ button.form__button--filled.form__button--centered:hover {
  * the panel body below. Most pages use bare .panel__heading as direct child
  * of the panel; only .page__post--index wraps it in .panel__header (with
  * sibling .panel__actions for the search bar). */
-[class*="page__"]
-  :is(.panel, .panelV2)
-  .panel__heading {
+[class*="page__"] :is(.panel, .panelV2) .panel__heading {
   border-radius: var(--cp-radius-xl) var(--cp-radius-xl) 0 0;
 }
-.page__post--index,
-.page__ticket--index,
-.page__user-conversation--index :is(.panel, .panelV2) .panel__header {
+[class*="page__"] :is(.panel, .panelV2) .panel__header {
   border-radius: var(--cp-radius-xl) var(--cp-radius-xl) 0 0;
 }
 
