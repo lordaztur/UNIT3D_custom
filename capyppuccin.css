@@ -1,10 +1,13 @@
 /*!
- * Catppuccin Mocha Override for UNIT3D Material Design v3 Dark
+ * Capyppuccin — UNIT3D theme override
  * https://github.com/gfrcr/UNIT3D_custom
+ *
+ * Yellow-dominant pastel theme for UNIT3D's Material Design v3 Dark.
+ * Palette inspired by Catppuccin Mocha (https://catppuccin.com).
  *
  * Load AFTER material-design-v3-dark.css:
  *   <link rel="stylesheet" href="/css/material-design-v3-dark.css">
- *   <link rel="stylesheet" href="/css/catppuccin-mocha-overrides.css">
+ *   <link rel="stylesheet" href="/css/capyppuccin.css">
  */
 
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
