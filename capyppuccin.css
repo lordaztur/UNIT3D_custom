@@ -686,7 +686,7 @@ button.form__button--filled.form__button--centered:hover {
     .page__topic--index,
     .page__post--index
   )
-  .panelV2 {
+  :is(.panel, .panelV2) {
   border-radius: var(--cp-radius-xl);
   overflow: hidden;
 }
@@ -697,7 +697,7 @@ button.form__button--filled.form__button--centered:hover {
     .page__topic--index,
     .page__post--index
   )
-  .panelV2
+  :is(.panel, .panelV2)
   .panel__heading {
   border-radius: var(--cp-radius-xl) var(--cp-radius-xl) 0 0;
 }
