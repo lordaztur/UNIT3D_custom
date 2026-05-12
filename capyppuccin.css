@@ -565,7 +565,8 @@ button.form__button--filled.form__button--centered:hover {
 :is(
     .page__forum--index,
     .page__forum-topic--index,
-    .page__category-topic--index
+    .page__category-topic--index,
+    .page__topic--index
   )
   :is(.panel__heading, .panel__header-link) {
   color: var(--cp-yellow);
@@ -580,7 +581,8 @@ button.form__button--filled.form__button--centered:hover {
 :is(
     .page__forum--index,
     .page__forum-topic--index,
-    .page__category-topic--index
+    .page__category-topic--index,
+    .page__topic--index
   )
   .panelV2 {
   border-radius: var(--cp-radius-xl);
@@ -589,7 +591,8 @@ button.form__button--filled.form__button--centered:hover {
 :is(
     .page__forum--index,
     .page__forum-topic--index,
-    .page__category-topic--index
+    .page__category-topic--index,
+    .page__topic--index
   )
   .panelV2
   .panel__heading {
