@@ -437,6 +437,57 @@ a:visited:not([style]) {
   accent-color: var(--cp-yellow);
 }
 
+/* === Data-table polish ===
+ * Rounds the table corners so the thead/tfoot hug the panel's radius
+ * instead of sitting as a square bar inside the rounded panel, and
+ * bumps thead text to small-caps for clearer column hierarchy.
+ *
+ * Switching to border-collapse: separate is required to make per-cell
+ * border-radius render. We add a one-pixel border between tbody rows
+ * to replace the line collapse used to draw, keeping the row separators
+ * we want without double-border artifacts.
+ */
+.data-table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.data-table thead tr th {
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--cp-subtext);
+}
+.data-table thead tr th:first-of-type {
+  border-top-left-radius: var(--cp-radius-md);
+}
+.data-table thead tr th:last-of-type {
+  border-top-right-radius: var(--cp-radius-md);
+}
+.data-table tbody tr td {
+  border-top: 1px solid var(--cp-surface-1);
+}
+.data-table tbody tr:first-of-type td {
+  border-top: none;
+}
+.data-table tbody tr:last-of-type td:first-of-type {
+  border-bottom-left-radius: var(--cp-radius-md);
+}
+.data-table tbody tr:last-of-type td:last-of-type {
+  border-bottom-right-radius: var(--cp-radius-md);
+}
+.data-table tbody tr {
+  transition: background-color 0.12s ease;
+}
+
+/* Same treatment for key-value tables (settings forms, user stats) */
+.key-value {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--cp-radius-md);
+  overflow: hidden;
+}
+
 /* Selection highlight (default is system blue) */
 ::selection {
   background: var(--cp-yellow);
