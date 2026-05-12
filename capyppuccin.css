@@ -34,10 +34,11 @@
   --cp-surface-0:  #221f1c;
   --cp-surface-1:  #2f2b27;
 
-  /* Text */
-  --cp-text:       #cdd6f4;
-  --cp-subtext:    #a6adc8;
-  --cp-overlay:    #6c7086;
+  /* Text (warm off-white scale — replaces Mocha's lavender-tinted greys
+     which read as blueish against the yellow brand) */
+  --cp-text:       #ebe2cf;
+  --cp-subtext:    #b8b1a0;
+  --cp-overlay:    #7d7869;
 
   /* Semantic */
   --cp-green:      #a6e3a1;

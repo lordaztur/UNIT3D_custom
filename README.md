@@ -53,7 +53,7 @@ Hard-refresh the page. Open `test/verify.html` from a checkout of this repo to c
 | Secondary | `#fab387` Mocha Peach |
 | Tertiary | `#f5e0dc` Mocha Rosewater |
 | Surfaces | `#161412` / `#0e0d0c` / `#221f1c` / `#2f2b27` (warm charcoal ramp) |
-| Text | `#cdd6f4` / `#a6adc8` / `#6c7086` |
+| Text | `#ebe2cf` / `#b8b1a0` / `#7d7869` (warm off-white scale) |
 | Success / Seeders | `#a6e3a1` Mocha Green |
 | Danger / Leechers | `#f38ba8` Mocha Red |
 | Info / Links | `#89b4fa` Mocha Blue |
