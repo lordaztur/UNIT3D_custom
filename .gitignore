@@ -11,3 +11,6 @@ Thumbs.db
 
 # Misc
 *.log
+
+# Chrome DevTools Local Overrides mirror (live editing only)
+gfrcr.github.io/
