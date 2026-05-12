@@ -32,9 +32,9 @@
    *
    * Plus warm complements (peach, rosewater) for non-yellow accents.
    */
-  --cp-yellow-soft: #fef9c3;
-  --cp-cream:       #fef3a0;
-  --cp-yellow:      #f9e2af;
+  --cp-yellow-soft: #fff8c5;  /* very pale, decorative — glow rings, subtle bg */
+  --cp-cream:       #fce087;  /* saturated lemon — hover, lift, button accent */
+  --cp-yellow:      #f9e2af;  /* brand pastel peachy yellow */
   --cp-honey:       #e8c573;
   --cp-gold:        #caa55e;
   --cp-peach:       #fab387;
@@ -75,7 +75,7 @@
    * Net-new additions to UNIT3D's variable namespace
    * (not --cp-* tokens — these are consumed directly by global selectors)
    * ============================================ */
-  --shadow-glow:   0 0 0 3px rgba(254, 249, 195, 0.5);  /* yellow-soft alpha — pale ring */
+  --shadow-glow:   0 0 0 3px rgba(255, 248, 197, 0.5);  /* yellow-soft alpha — pale ring */
 
   /* === Block 1 — Brand & action colors (yellow-dominant) === */
   --button-filled-bg:        var(--cp-yellow);

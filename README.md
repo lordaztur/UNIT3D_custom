@@ -49,7 +49,7 @@ Hard-refresh the page. Open `test/verify.html` from a checkout of this repo to c
 
 | Role | Hex |
 |------|-----|
-| Yellow scale | `#fef9c3` soft · `#fef3a0` cream · `#f9e2af` **yellow** (brand) · `#e8c573` honey · `#caa55e` gold |
+| Yellow scale | `#fff8c5` soft · `#fce087` cream · `#f9e2af` **yellow** (brand) · `#e8c573` honey · `#caa55e` gold |
 | Secondary warm | `#fab387` Mocha Peach |
 | Tertiary | `#f5e0dc` Mocha Rosewater |
 | Surfaces | `#161412` / `#0e0d0c` / `#221f1c` / `#2f2b27` (warm charcoal ramp) |
