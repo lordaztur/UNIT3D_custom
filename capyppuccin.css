@@ -560,6 +560,7 @@ button.form__button--filled.form__button--centered:hover {
  * header / aside / toolbar so each post reads as a card. */
 .post {
   border-radius: var(--cp-radius-lg);
+  overflow: hidden;
   box-shadow: var(--cp-shadow-md);
   background-color: var(--cp-surface-0);
   margin-bottom: 12px;
@@ -699,18 +700,6 @@ button.form__button--filled.form__button--centered:hover {
   .panelV2
   .panel__heading {
   border-radius: var(--cp-radius-xl) var(--cp-radius-xl) 0 0;
-}
-
-/* Recent-posts listing (.page__post--index): each post is wrapped in an
- * <li class="post-listings__item">. Add vertical breathing room and a
- * rounded surface so posts read as discrete cards rather than a wall. */
-.post-listings__item {
-  margin-bottom: 12px;
-  border-radius: var(--cp-radius-lg);
-  overflow: hidden;
-}
-.post-listings__item:last-child {
-  margin-bottom: 0;
 }
 
 /* Subforum row — subtle hover lift on the whole item */
