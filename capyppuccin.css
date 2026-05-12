@@ -52,7 +52,6 @@
 
   /* Surfaces (warm neutral charcoal — no purple undertone) */
   --cp-base: #161412;
-  --cp-mantle-light: #191918;
   --cp-mantle: #0e0d0c;
   --cp-surface-0: #221f1c;
   --cp-surface-1: #2f2b27;
@@ -99,7 +98,7 @@
   /* === Block 2 — Surfaces (warm charcoal ramp) === */
   --body-bg: var(--cp-base);
   --top-nav-bg: var(--cp-mantle);
-  --secondary-nav-bg: var(--cp-mantle-light);
+  --secondary-nav-bg: var(--cp-mantle);
   --footer-bg: var(--cp-mantle);
 
   --panel-bg: var(--cp-surface-0);
@@ -668,7 +667,8 @@ button.form__button--filled.form__button--centered:hover {
     .page__category-topic--index,
     .page__topic--index,
     .page__post--index,
-    .page__subscription--index
+    .page__subscription--index,
+    [class*="page__stats--"]
   )
   :is(.panel__heading, .panel__header-link) {
   color: var(--cp-yellow);
@@ -686,7 +686,8 @@ button.form__button--filled.form__button--centered:hover {
     .page__category-topic--index,
     .page__topic--index,
     .page__post--index,
-    .page__subscription--index
+    .page__subscription--index,
+    [class*="page__stats--"]
   )
   :is(.panel, .panelV2) {
   border-radius: var(--cp-radius-xl);
@@ -701,7 +702,8 @@ button.form__button--filled.form__button--centered:hover {
     .page__forum-topic--index,
     .page__category-topic--index,
     .page__topic--index,
-    .page__subscription--index
+    .page__subscription--index,
+    [class*="page__stats--"]
   )
   :is(.panel, .panelV2)
   .panel__heading {
