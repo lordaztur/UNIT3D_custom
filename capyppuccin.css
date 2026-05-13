@@ -1,31 +1,12 @@
 /*!
  * Capyppuccin — UNIT3D theme override
- * https://github.com/gfrcr/UNIT3D_custom
- *
- * Yellow-dominant pastel theme for UNIT3D's Material Design v3 Dark.
- * Palette inspired by Catppuccin Mocha (https://catppuccin.com).
- *
- * Load AFTER material-design-v3-dark.css. Hosted via GitHub Pages
- * (compatible with UNIT3D's default CSP):
- *   <link rel="stylesheet" href="/css/material-design-v3-dark.css">
- *   <link rel="stylesheet"
- *     href="https://gfrcr.github.io/UNIT3D_custom/capyppuccin.css">
- *
- * See README.md for the self-hosted alternative.
- */
-
-/* No web fonts: CSP font-src is 'self' only. Stacks in Block 8 fall back
- * to system-ui/ui-monospace until admin self-hosts woff2. See README. */
+ * https://github.com/gfrcr/UNIT3D_custom */
 
 :root {
   /* ============================================
    * Design tokens — single source of truth
-   * Built blocks below remap UNIT3D variables to these.
    * ============================================ */
 
-  /* Brand yellow scale (soft → honey) + warm complements (peach, rosewater).
-   * Order: lightest → deepest. cream = hover/lift, yellow = brand,
-   * honey = active borders + deeper accents. */
   --cp-yellow-soft: #fff8c5; /* very pale, decorative — glow rings, subtle bg */
   --cp-cream: #fce087; /* saturated lemon — hover, lift, button accent */
   --cp-yellow: #f9e2af; /* brand pastel peachy yellow */
@@ -66,10 +47,6 @@
   /* Soft yellow glow — diffuse, no spread (for trailer/button hover halos) */
   --cp-glow-soft: 0 0 12px rgba(249, 226, 175, 0.4);
 
-  /* ============================================
-   * Net-new additions to UNIT3D's variable namespace
-   * (not --cp-* tokens — these are consumed directly by global selectors)
-   * ============================================ */
   /* Pale ring used by :focus-visible accents (form__checkbox, etc) */
   --shadow-glow: 0 0 0 3px rgba(255, 248, 197, 0.5);
 
@@ -80,6 +57,7 @@
   --button-text-fg: var(--cp-yellow);
   --icon-button-filled-fg: var(--cp-base);
   --icon-button-fg: var(--cp-text);
+
   /* === Block 2 — Surfaces (warm charcoal ramp) === */
   --body-bg: var(--cp-base);
   --top-nav-bg: var(--cp-mantle);
@@ -204,8 +182,6 @@
 
   /* === Block 7 — Extended component overrides === */
 
-  /* Top-nav: all text in --cp-text (clickable + non-clickable share one tone);
-     hover = yellow brand accent; icon-bar bg circles stay cream. */
   --top-nav-dropdown-fg: var(--cp-text);
   --top-nav-dropdown-hover-fg: var(--cp-yellow); /* hover = brand yellow */
   --top-nav-dropdown-hover-bg: var(--cp-surface-1);
@@ -575,10 +551,7 @@ button.form__button--filled.form__button--centered:hover {
   color: var(--cp-pink);
 }
 
-/* === Search dropdown clipping fix ===
- * Base uses overflow:hidden to clip rounded corners — also clips the abs-positioned
- * results dropdown below the navbar. Switch to overflow:visible; input's own
- * border-radius shapes it. Bump z-index so results layer above page content. */
+/* === Search dropdown clipping === */
 .compact-search,
 .quick-search {
   overflow: visible;
@@ -586,34 +559,58 @@ button.form__button--filled.form__button--centered:hover {
 .quick-search__results {
   z-index: 1000;
 }
-/* Base bundle ships a global :focus-visible with translateY(-2px) +
- * brightness(1.12) + 3px gold glow. Applies to every focused element,
- * sitting BEHIND our intentional focus styles and creating an extra
- * unwanted aura. Neutralize so per-component :focus rules own the cue. */
+
 :focus-visible {
   transform: none !important;
   filter: none !important;
   box-shadow: none !important;
 }
-/* With the global glow gone, paint a continuous yellow outline around the
- * search input + dropdown when focus is inside .quick-search. */
+/* quick-search. */
 .quick-search:focus-within .quick-search__input,
 .quick-search:focus-within .quick-search__results {
   border-color: var(--cp-yellow);
 }
 
-/* === Top-nav alert badge ===
- * Bell/envelope blink indicator; no UNIT3D var for color. Tint via `color`
- * (for fill="currentColor" SVGs) plus explicit `fill` for hardcoded SVGs. */
+/* === Top-nav alert badge === */
 .top-nav__icon-bar > li > a > svg,
 .top-nav__icon-bar > li > a > svg * {
   color: var(--cp-honey);
   fill: var(--cp-honey);
 }
 
-/* === Secondary nav tabs ===
- * Match top-nav dropdown pattern; drop base's brightness(120%) hover filter
- * since bg lift + color shift already signals feedback. */
+/* === Top-nav dropdowns — mirror secondary-nav hover pattern ===
+ * Base ships radius:5px + focus-within bg shift. Bump to radius-md + add
+ * :hover (so mouse matches keyboard) with smoother fade. */
+.top-nav__dropdown > a {
+  border-radius: var(--cp-radius-md);
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+.top-nav__dropdown > a:hover {
+  color: var(--cp-yellow);
+  background-color: var(--cp-surface-1);
+}
+/* Active page indication via :has() — body knows which page__* wrapper is
+ * mounted, propagate to the matching top-nav dropdown anchor. Highlights:
+ *   - "Torrents" → any page__torrent* wrapper
+ *   - "Comunidade" → forums/topics/posts/playlists/stats/etc. */
+body:has(main[class*="page__torrent"]) .top-nav__dropdown > a[href$="/torrents"],
+body:has(main[class*="page__forum"]) .top-nav__dropdown > a[href$="/forums"],
+body:has(main[class*="page__topic"]) .top-nav__dropdown > a[href$="/forums"],
+body:has(main[class*="page__post"]) .top-nav__dropdown > a[href$="/forums"],
+body:has(main[class*="page__category-topic"]) .top-nav__dropdown > a[href$="/forums"],
+body:has(main[class*="page__subscription"]) .top-nav__dropdown > a[href$="/forums"],
+body:has(main[class*="page__playlist"]) .top-nav__dropdown > a[href$="/forums"],
+body:has(main[class*="page__article"]) .top-nav__dropdown > a[href$="/forums"],
+body:has(main[class*="page__poll"]) .top-nav__dropdown > a[href$="/forums"],
+body:has(main[class*="page__stats"]) .top-nav__dropdown > a[href$="/forums"] {
+  color: var(--cp-yellow);
+  background-color: var(--cp-surface-0);
+  font-weight: 600;
+}
+
+/* === Secondary nav tabs === */
 .nav-tab--active__link,
 .nav-tab__link {
   border-radius: var(--cp-radius-md);
