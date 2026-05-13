@@ -148,6 +148,8 @@
   --key-value-fg: var(--cp-text);
   --data-table-fg: var(--cp-text);
   --input-text-fg: var(--cp-text);
+  --textarea-fg: var(--cp-text);
+  --select-fg: var(--cp-text);
   --breadcrumb-fg: var(--cp-subtext);
   --breadcrumb-active-fg: var(--cp-yellow);
   --breadcrumb-hover-fg: var(--cp-cream);
@@ -1213,6 +1215,14 @@ html {
 .chatroom__whispers {
   color: var(--cp-overlay);
   font-style: italic;
+}
+
+/* Comment list — base uses #444 between items which is barely visible on
+ * our warm-charcoal surface. Beef up the divider and add breathing room. */
+.comment__list-item + .comment__list-item > .comment {
+  border-top: 1px solid var(--cp-surface-1);
+  padding-top: 28px;
+  margin-top: 16px;
 }
 
 /* === Secondary nav tabs ===
