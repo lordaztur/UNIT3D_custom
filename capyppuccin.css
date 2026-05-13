@@ -260,7 +260,7 @@
   --secondary-nav-tab-bg: transparent;
   --secondary-nav-tab-hover-fg: var(--cp-yellow);
   --secondary-nav-tab-hover-bg: var(--cp-surface-1);
-  --secondary-nav-tab-active-text-decoration: underline var(--cp-yellow) 2px;
+  --secondary-nav-tab-active-text-decoration: none;
   --secondary-nav-tab-hover-text-decoration: none;
   --secondary-nav-tab-menu-bg: var(--cp-surface-0);
   --secondary-nav-tab-menu-fg: var(--cp-text);
