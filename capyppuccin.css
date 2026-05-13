@@ -564,46 +564,6 @@ button.form__button--filled.form__button--centered:hover {
 .quick-search__results {
   z-index: 1000;
 }
-/* Result items — base styled :focus on .__result-link only; add :hover for
- * mouse and cover the --default and --empty states (which have no <a>, so
- * we target the article itself for those). Use !important because base sets
- * the bg via --quick-search-bg with same specificity and we want hover to
- * win clearly. */
-.quick-search__result-link:hover,
-.quick-search__result-link:focus,
-.quick-search__result-link:focus-visible {
-  background-color: var(--cp-surface-1) !important;
-  color: var(--cp-yellow) !important;
-}
-.quick-search__result--default:hover,
-.quick-search__result--empty:hover {
-  background-color: var(--cp-surface-1) !important;
-  color: var(--cp-yellow) !important;
-  cursor: pointer;
-}
-.quick-search__result--default:hover .quick-search__result-text,
-.quick-search__result--empty:hover .quick-search__result-text,
-.quick-search__result-link:hover .quick-search__result-text,
-.quick-search__result-link:focus .quick-search__result-text {
-  color: var(--cp-yellow);
-}
-.quick-search__result {
-  transition:
-    background-color 0.12s ease,
-    color 0.12s ease;
-}
-/* Base bundle ships a global `:focus-visible { transform: translateY(-2px);
- * filter: brightness(1.12); box-shadow: gold-ring + drop }` rule. On
- * dropdown items this lifts each result up 2px (weird) and stacks a gold
- * glow that clashes. Cancel transforms/filters/shadows inside the dropdown
- * and let our bg+color rule above do the work. */
-.quick-search__result-link:focus-visible,
-.quick-search__result--default:focus-visible,
-.quick-search__result--empty:focus-visible {
-  transform: none;
-  filter: none;
-  box-shadow: none;
-}
 
 /* === Top-nav alert badge ===
  * Bell/envelope blink indicator; no UNIT3D var for color. Tint via `color`
@@ -795,33 +755,6 @@ html {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--cp-yellow);
-}
-::-webkit-scrollbar-button,
-::-webkit-scrollbar-button:start,
-::-webkit-scrollbar-button:end,
-::-webkit-scrollbar-button:start:decrement,
-::-webkit-scrollbar-button:end:increment,
-::-webkit-scrollbar-button:start:increment,
-::-webkit-scrollbar-button:end:decrement,
-::-webkit-scrollbar-button:vertical:start,
-::-webkit-scrollbar-button:vertical:end,
-::-webkit-scrollbar-button:horizontal:start,
-::-webkit-scrollbar-button:horizontal:end,
-::-webkit-scrollbar-button:vertical:increment,
-::-webkit-scrollbar-button:vertical:decrement,
-::-webkit-scrollbar-button:horizontal:increment,
-::-webkit-scrollbar-button:horizontal:decrement,
-::-webkit-scrollbar-button:no-button,
-::-webkit-scrollbar-button:single-button,
-::-webkit-scrollbar-button:double-button,
-::-webkit-scrollbar-corner {
-  -webkit-appearance: none !important;
-  appearance: none !important;
-  display: none !important;
-  visibility: hidden !important;
-  width: 0 !important;
-  height: 0 !important;
-  background: transparent !important;
 }
 
 /* === Topic show — individual posts ===
