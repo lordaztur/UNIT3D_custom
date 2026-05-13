@@ -772,23 +772,6 @@ body:has(main[class*="page__stats"]) .top-nav__dropdown > a[href$="/forums"] {
   border-radius: var(--cp-radius-md);
   overflow: hidden;
 }
-/* Base stripes only .key-value__group--nested (nested rows). Plain
- * .key-value__group at the end of a panel breaks the pattern visually.
- * Extend striping to all .key-value__group so the alternating bg
- * continues uniformly through summary/totals rows at the bottom. */
-.key-value__group:nth-child(odd) {
-  background-color: var(--key-value-odd-bg);
-}
-.key-value__group:nth-child(2n) {
-  background-color: var(--key-value-even-bg);
-}
-/* Base rounds the dd of :last-child .key-value__group (creates pill on
- * totals). Drop it so the last row is flush with the rest of the stripe
- * pattern — .key-value's own overflow:hidden + border-radius already
- * handles outer rounding. */
-.key-value__group:last-child dd {
-  border-radius: 0;
-}
 
 /* Selection highlight (default is system blue) */
 ::selection {
