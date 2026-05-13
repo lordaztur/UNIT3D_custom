@@ -1014,3 +1014,50 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--cp-yellow);
 }
+
+/* === Utility color overrides ===
+ * UNIT3D's main bundle ships hard-saturated text-* utility classes used
+ * throughout user-torrents / ratio cells / activity indicators. Remap to
+ * pastel/Catppuccin tones so they harmonize with the rest of the theme. */
+.text-success {
+  color: var(--cp-green);
+}
+.text-info {
+  color: var(--cp-blue);
+}
+.text-warning {
+  color: var(--cp-honey);
+}
+.text-danger,
+.text-red {
+  color: var(--cp-red);
+}
+.text-green {
+  color: var(--cp-green);
+}
+.text-orange {
+  color: var(--cp-peach);
+}
+.text-blue {
+  color: var(--cp-blue);
+}
+.text-purple {
+  color: var(--cp-mauve);
+}
+
+/* Ratio-bar icons (sidebar buffer/tokens widget) */
+.ratio-bar__seeding i {
+  color: var(--cp-green);
+}
+.ratio-bar__leeching i {
+  color: var(--cp-red);
+}
+.ratio-bar__tokens i {
+  color: var(--cp-yellow);
+}
+.ratio-bar__buffer i {
+  color: var(--cp-teal);
+}
+.ratio-bar__warnings i {
+  color: var(--cp-red);
+}
