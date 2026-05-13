@@ -637,17 +637,13 @@ body:has(main[class*="page__internal"]) .top-nav__dropdown:has(a[href*="/subtitl
 body:has(main[class*="page__user"]) .top-nav__dropdown > a[href*="/users/"],
 
 /* Right-side icon links: envelope (conversations) + bell (notifications) */
-body:has(main[class*="page__user-conversation"]) .top-nav--right__icon-link[href*="/conversations"],
-body:has(main[class*="page__user-notification"]) .top-nav--right__icon-link[href*="/notifications"] {
-  color: var(--cp-yellow);
-  background-color: var(--cp-surface-0);
-  font-weight: 600;
-}
-/* FA icons render as <i> (webfont mode) with explicit color, so they
- * don't inherit from the active <a>. Recolor the <i> directly. */
-body:has(main[class*="page__user-conversation"]) .top-nav--right__icon-link[href*="/conversations"] i,
-body:has(main[class*="page__user-notification"]) .top-nav--right__icon-link[href*="/notifications"] i {
-  color: var(--cp-yellow);
+/* Envelope/sino: o círculo é o <i> (aspect-ratio:1/1 + border-radius +
+ * background-color). Pra marcar ativo, espelhamos o estado :hover do
+ * próprio <i>, não do <a> (pintar o <a> faria um retângulo solto). */
+body:has(main[class*="page__user-conversation"]) .top-nav--right__icon-link[href*="/conversations"] > i,
+body:has(main[class*="page__user-notification"]) .top-nav--right__icon-link[href*="/notifications"] > i {
+  color: var(--top-nav-icon-bar-icon-hover-fg);
+  background-color: var(--top-nav-icon-bar-icon-hover-bg);
 }
 
 /* === Secondary nav tabs === */
