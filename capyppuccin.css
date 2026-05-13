@@ -534,7 +534,8 @@ button.form__button--filled.form__button--centered:hover {
  * mouse and cover the --default and --empty states (which have no <a>, so
  * we target the article itself for those). */
 .quick-search__result-link:hover,
-.quick-search__result-link:focus {
+.quick-search__result-link:focus,
+.quick-search__result-link:focus-visible {
   background-color: var(--cp-surface-1);
   color: var(--cp-yellow);
 }
@@ -547,6 +548,18 @@ button.form__button--filled.form__button--centered:hover {
   transition:
     background-color 0.12s ease,
     color 0.12s ease;
+}
+/* Base bundle ships a global `:focus-visible { transform: translateY(-2px);
+ * filter: brightness(1.12); box-shadow: gold-ring + drop }` rule. On
+ * dropdown items this lifts each result up 2px (weird) and stacks a gold
+ * glow that clashes. Cancel transforms/filters/shadows inside the dropdown
+ * and let our bg+color rule above do the work. */
+.quick-search__result-link:focus-visible,
+.quick-search__result--default:focus-visible,
+.quick-search__result--empty:focus-visible {
+  transform: none;
+  filter: none;
+  box-shadow: none;
 }
 
 /* === Top-nav alert badge ===
