@@ -1,0 +1,50 @@
+name: Minify CSS
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "capyppuccin.css"
+      - "capyppuccin-bg.css"
+      - ".github/workflows/minify.yml"
+  workflow_dispatch:
+
+# Avoid infinite loop: skip when this workflow's own bot commit triggers it.
+concurrency:
+  group: minify-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    if: "!contains(github.event.head_commit.message, '[skip-minify]')"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Need full history to push back
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Minify
+        run: |
+          npx --yes csso-cli@4.0.1 capyppuccin.css -o capyppuccin.min.css
+          npx --yes csso-cli@4.0.1 capyppuccin-bg.css -o capyppuccin-bg.min.css
+
+      - name: Commit minified output
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet capyppuccin.min.css capyppuccin-bg.min.css; then
+            echo "No changes in minified output, skipping commit."
+            exit 0
+          fi
+          git add capyppuccin.min.css capyppuccin-bg.min.css
+          git commit -m "build: regen minified css [skip-minify]"
+          git push
