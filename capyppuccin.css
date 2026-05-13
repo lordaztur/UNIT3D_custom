@@ -256,10 +256,12 @@
   --top-nav-icon-bar-icon-hover-bg: var(--cp-cream); /* decorative hover bg */
 
   /* Secondary-nav tabs */
-  --secondary-nav-tab-fg: var(--cp-subtext);
-  --secondary-nav-tab-hover-fg: var(--cp-text);
-  --secondary-nav-tab-active-text-decoration: underline var(--cp-gold) 2px;
-  --secondary-nav-tab-hover-text-decoration: underline var(--cp-yellow) 2px;
+  --secondary-nav-tab-fg: var(--cp-text);
+  --secondary-nav-tab-bg: transparent;
+  --secondary-nav-tab-hover-fg: var(--cp-yellow);
+  --secondary-nav-tab-hover-bg: var(--cp-surface-1);
+  --secondary-nav-tab-active-text-decoration: underline var(--cp-yellow) 2px;
+  --secondary-nav-tab-hover-text-decoration: none;
   --secondary-nav-tab-menu-bg: var(--cp-surface-0);
   --secondary-nav-tab-menu-fg: var(--cp-text);
 
@@ -1183,4 +1185,25 @@ html {
 }
 .torrent-icons__comments {
   color: var(--cp-blue);
+}
+
+/* === Secondary nav tabs ===
+ * Match the top-nav dropdown pattern: text resting, yellow hover with a
+ * subtle surface-1 background lift (rounded), active tab persistently yellow
+ * with a yellow underline. Drop base's brightness(120%) hover filter since
+ * the bg lift + color shift already provides feedback. */
+.nav-tab--active__link,
+.nav-tab__link {
+  border-radius: var(--cp-radius-md);
+  transition:
+    color 0.12s ease,
+    background-color 0.12s ease;
+}
+.nav-tab--active__link:hover,
+.nav-tab__link:hover {
+  filter: none;
+}
+.nav-tab--active > .nav-tab--active__link {
+  color: var(--cp-yellow);
+  font-weight: 600;
 }
