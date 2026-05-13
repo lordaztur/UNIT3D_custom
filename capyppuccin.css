@@ -917,6 +917,7 @@ button.form__button--filled.form__button--centered:hover {
   background-color: transparent;
   border-bottom: 2px solid transparent;
   color: var(--cp-subtext);
+  border-radius: var(--cp-radius-md) var(--cp-radius-md) 0 0;
   transition:
     color 0.12s ease,
     border-color 0.12s ease,
@@ -931,6 +932,13 @@ button.form__button--filled.form__button--centered:hover {
   background-color: var(--cp-surface-0);
   border-bottom: 2px solid transparent;
   font-weight: 600;
+}
+/* Chat tab ping icon — base uses .text-danger for "no new pings" idle state,
+ * but red reads as alert against the warm palette. Scoped override: when the
+ * icon is inside a chatbox tab and NOT pinged, just inherit the tab's color
+ * (subtext / cream / yellow depending on tab state). */
+.chatbox__tab .fa-comment.text-danger {
+  color: inherit;
 }
 .panel__heading {
   color: var(--cp-text);
