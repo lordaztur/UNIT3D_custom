@@ -117,7 +117,7 @@
   --option-bg: var(--cp-surface-0);
   --paginate-bg: var(--cp-surface-0);
   --compact-search-bg: var(--cp-surface-0);
-  --chatbox-message-bg: var(--cp-surface-0);
+  --chatbox-message-bg: var(--cp-surface-1);
   --chatbox-users-bg: var(--cp-mantle);
 
   --bbcode-input-bg: var(--cp-surface-0);
@@ -1207,9 +1207,23 @@ html {
 .chatbox-message:hover .chatbox-message__action-button:hover {
   color: var(--cp-peach);
 }
-/* Avatar border — base sets border-style but no color, defaults to currentColor */
-.chatbox-message__avatar {
-  border-color: var(--cp-surface-1);
+/* Message bubble polish */
+.chatbox-message {
+  box-shadow: var(--cp-shadow-sm);
+}
+.chatbox-message__address {
+  color: var(--cp-text);
+}
+.chatbox-message__time {
+  color: var(--cp-subtext);
+}
+.chatbox-message__content {
+  color: var(--cp-text);
+}
+/* Bot message — italic from inline, just tint slightly muted */
+.bot-message,
+.chatbox-message__content.bot-message {
+  color: var(--cp-subtext);
 }
 /* Whispers/typing indicator — muted */
 .chatroom__whispers {
