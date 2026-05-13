@@ -1207,3 +1207,24 @@ html {
   color: var(--cp-yellow);
   font-weight: 600;
 }
+
+/* Quick-search header input — match form__text hover/focus pattern:
+ * peach border on hover, yellow border on focus. Base ships no hover/focus
+ * vars for this input, so wire them up explicitly. */
+.quick-search__input {
+  border: 1px solid var(--cp-overlay);
+  color: var(--cp-text);
+  transition:
+    border-color 0.12s ease,
+    box-shadow 0.12s ease;
+}
+.quick-search__input::placeholder {
+  color: var(--cp-subtext);
+}
+.quick-search__input:hover {
+  border-color: var(--cp-peach);
+}
+.quick-search__input:focus {
+  border-color: var(--cp-yellow);
+  outline: none;
+}
