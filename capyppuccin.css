@@ -127,8 +127,8 @@
   --torrent-row-seeders-fg: var(--cp-green);
   --torrent-row-leechers-fg: var(--cp-red);
   --bbcode-rendered-danger-fg: var(--cp-red);
-  --bbcode-rendered-accent-fg: var(--cp-mauve);
-  --bbcode-rendered-accent-emphasis: var(--cp-mauve);
+  --bbcode-rendered-accent-fg: var(--cp-yellow);
+  --bbcode-rendered-accent-emphasis: var(--cp-cream);
   /* === Block 5 — Border radii (sm 6 / md 10 / lg 14 / xl 20) === */
 
   /* md — buttons, inputs */
