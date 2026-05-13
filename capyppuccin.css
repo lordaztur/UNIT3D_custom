@@ -101,7 +101,7 @@
   --chatbox-message-bg: var(--cp-surface-1);
   --chatbox-users-bg: var(--cp-mantle);
 
-  --bbcode-input-bg: var(--cp-surface-1);
+  --bbcode-input-bg: var(--cp-surface-0);
   --bbcode-input-body-bg: var(--cp-surface-1);
   --bbcode-input-header-bg: var(--cp-surface-0);
 
@@ -634,7 +634,7 @@ button.form__button--filled.form__button--centered:hover {
 }
 .bbcode-input__tab-input:checked + .bbcode-input__tab-label {
   color: var(--cp-yellow);
-  background-color: var(--cp-surface-0);
+  background-color: var(--cp-surface-1);
   border-bottom: 2px solid transparent;
   font-weight: 600;
 }
