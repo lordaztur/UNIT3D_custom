@@ -1170,21 +1170,33 @@ html {
   color: var(--cp-cream);
 }
 
-/* Ratio-bar icons (sidebar buffer/tokens widget) */
-.ratio-bar__seeding i {
+/* Ratio-bar icons — sidebar widget (sm subset) + top-nav full bar */
+.ratio-bar__seeding i,
+.top-nav__ratio-bar .ratio-bar__uploaded i,
+.top-nav__ratio-bar .ratio-bar__seeding i {
   color: var(--cp-green);
 }
-.ratio-bar__leeching i {
+.ratio-bar__leeching i,
+.top-nav__ratio-bar .ratio-bar__downloaded i,
+.top-nav__ratio-bar .ratio-bar__leeching i {
   color: var(--cp-red);
 }
-.ratio-bar__tokens i {
+.ratio-bar__tokens i,
+.top-nav__ratio-bar .ratio-bar__tokens i {
   color: var(--cp-yellow);
 }
-.ratio-bar__buffer i {
+.ratio-bar__buffer i,
+.top-nav__ratio-bar .ratio-bar__buffer i {
   color: var(--cp-teal);
 }
 .ratio-bar__warnings i {
   color: var(--cp-red);
+}
+.top-nav__ratio-bar .ratio-bar__points i {
+  color: var(--cp-honey);
+}
+.top-nav__ratio-bar .ratio-bar__ratio i {
+  color: var(--cp-yellow);
 }
 
 /* === Torrent row icons / status badges ===
@@ -1210,6 +1222,107 @@ html {
 .torrent-icons__comments {
   color: var(--cp-blue);
 }
+
+/* === User group colors (.user-tag__link) ===
+ * Each group has a hex stored in the DB and Blade emits it as inline
+ * style="color: #XXX". Remap each known group hex to the closest pastel
+ * via attribute selectors + !important. Covers visible classes (Capivarinha,
+ * Arara, Uploader, etc.) + staff (Admin, Mod, Trustee) + legend chips. */
+.user-tag__link[style*="#7289DA"],
+.user-tag__link[style*="#7289da"] {
+  color: var(--cp-blue) !important;
+} /* Capivarinha */
+.user-tag__link[style*="#3c78d8"],
+.user-tag__link[style*="#3C78D8"] {
+  color: var(--cp-blue) !important;
+} /* Arara */
+.user-tag__link[style*="#D78A20"],
+.user-tag__link[style*="#d78a20"] {
+  color: var(--cp-honey) !important;
+} /* Mico-Leao */
+.user-tag__link[style*="#FDD229"],
+.user-tag__link[style*="#fdd229"] {
+  color: var(--cp-yellow) !important;
+} /* Onça */
+.user-tag__link[style*="#D8BFD8"],
+.user-tag__link[style*="#d8bfd8"] {
+  color: var(--cp-rosewater) !important;
+} /* Tatu */
+.user-tag__link[style*="#a85a00"],
+.user-tag__link[style*="#A85A00"] {
+  color: var(--cp-honey) !important;
+} /* Caramelo */
+.user-tag__link[style*="#8FBC8F"],
+.user-tag__link[style*="#8fbc8f"] {
+  color: var(--cp-green) !important;
+} /* Tartaruga */
+.user-tag__link[style*="#00ff2d"],
+.user-tag__link[style*="#00FF2D"] {
+  color: var(--cp-green) !important;
+} /* Uploader */
+.user-tag__link[style*="#BF55EC"],
+.user-tag__link[style*="#bf55ec"] {
+  color: var(--cp-mauve) !important;
+} /* Trustee */
+.user-tag__link[style*="#0BEAC5"],
+.user-tag__link[style*="#0beac5"] {
+  color: var(--cp-teal) !important;
+} /* Moderator */
+.user-tag__link[style*="#15B097"],
+.user-tag__link[style*="#15b097"] {
+  color: var(--cp-teal) !important;
+} /* Editor + Torrent Moderator */
+.user-tag__link[style*="#ff2800"],
+.user-tag__link[style*="#FF2800"] {
+  color: var(--cp-red) !important;
+} /* Administrator */
+.user-tag__link[style*="#000000"],
+.user-tag__link[style*="#000"] {
+  color: var(--cp-text) !important;
+} /* Owner (was black, invisible) */
+.user-tag__link[style*="#ff7400"],
+.user-tag__link[style*="#FF7400"] {
+  color: var(--cp-peach) !important;
+} /* Bot */
+.user-tag__link[style*="#7B61FF"],
+.user-tag__link[style*="#7b61ff"] {
+  color: var(--cp-mauve) !important;
+} /* Designer */
+.user-tag__link[style*="#FF69B4"],
+.user-tag__link[style*="#ff69b4"] {
+  color: var(--cp-pink) !important;
+} /* Lesma */
+.user-tag__link[style*="#96281B"],
+.user-tag__link[style*="#96281b"] {
+  color: var(--cp-red) !important;
+} /* Morcego */
+.user-tag__link[style*="#FF8C00"],
+.user-tag__link[style*="#ff8c00"] {
+  color: var(--cp-honey) !important;
+} /* Capivara-Master */
+.user-tag__link[style*="#0b918c"],
+.user-tag__link[style*="#0B918C"] {
+  color: var(--cp-teal) !important;
+} /* Lobo-Guara */
+.user-tag__link[style*="#BAAF92"],
+.user-tag__link[style*="#baaf92"] {
+  color: var(--cp-subtext) !important;
+} /* Internal */
+.user-tag__link[style*="#8D6262"],
+.user-tag__link[style*="#8d6262"] {
+  color: var(--cp-overlay) !important;
+} /* Pruned + Disabled */
+.user-tag__link[style*="#87691a"],
+.user-tag__link[style*="#87691A"] {
+  color: var(--cp-honey) !important;
+} /* Banned */
+.user-tag__link[style*="#575757"] {
+  color: var(--cp-overlay) !important;
+} /* Guest */
+.user-tag__link[style*="#95A5A6"],
+.user-tag__link[style*="#95a5a6"] {
+  color: var(--cp-subtext) !important;
+} /* Validating */
 
 /* === Chatbox ===
  * Bell/keyboard toggle states use inline rgb(0,102,0)/rgb(204,0,0) — force
