@@ -1229,11 +1229,15 @@ html {
  * 26 groups vs 12 tones), dessaturate + lighten via filter so each group
  * keeps its visual identity but lands in the pastel range. Pure black
  * (Owner #000) needs special handling since filter can't lift it. */
-.user-tag__link {
+.user-tag__link,
+.top-nav__username .text-bold,
+.top-nav__username--highresolution .text-bold {
   filter: saturate(0.5) brightness(1.25);
 }
 .user-tag__link[style*="#000000"],
-.user-tag__link[style*="#000"] {
+.user-tag__link[style*="#000"],
+.top-nav__username .text-bold[style*="#000"],
+.top-nav__username--highresolution .text-bold[style*="#000"] {
   color: var(--cp-text) !important;
   filter: none;
 } /* Owner — black is invisible on dark bg */
