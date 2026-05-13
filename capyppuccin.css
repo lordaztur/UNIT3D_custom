@@ -564,6 +564,21 @@ button.form__button--filled.form__button--centered:hover {
 .quick-search__results {
   z-index: 1000;
 }
+/* Base bundle ships a global :focus-visible with translateY(-2px) +
+ * brightness(1.12) + 3px gold glow. Applies to every focused element,
+ * sitting BEHIND our intentional focus styles and creating an extra
+ * unwanted aura. Neutralize so per-component :focus rules own the cue. */
+:focus-visible {
+  transform: none !important;
+  filter: none !important;
+  box-shadow: none !important;
+}
+/* With the global glow gone, paint a continuous yellow outline around the
+ * search input + dropdown when focus is inside .quick-search. */
+.quick-search:focus-within .quick-search__input,
+.quick-search:focus-within .quick-search__results {
+  border-color: var(--cp-yellow);
+}
 
 /* === Top-nav alert badge ===
  * Bell/envelope blink indicator; no UNIT3D var for color. Tint via `color`
