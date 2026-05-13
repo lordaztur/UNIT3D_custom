@@ -785,6 +785,13 @@ button.form__button--filled.form__button--centered:hover {
 .key-value__group:nth-child(2n) {
   background-color: var(--key-value-even-bg);
 }
+/* Base rounds the dd of :last-child .key-value__group (creates pill on
+ * totals). Drop it so the last row is flush with the rest of the stripe
+ * pattern — .key-value's own overflow:hidden + border-radius already
+ * handles outer rounding. */
+.key-value__group:last-child dd {
+  border-radius: 0;
+}
 
 /* Selection highlight (default is system blue) */
 ::selection {
