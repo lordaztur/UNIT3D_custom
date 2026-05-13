@@ -625,9 +625,14 @@ body:has(main[class*="page__ticket"]) .top-nav__dropdown:has(a[href*="/tickets"]
 body:has(main[class*="page__subtitle"]) .top-nav__dropdown:has(a[href*="/subtitles"]) > a:not([href]),
 body:has(main[class*="page__trending"]) .top-nav__dropdown:has(a[href*="/subtitles"]) > a:not([href]),
 body:has(main[class*="page__missing"]) .top-nav__dropdown:has(a[href*="/subtitles"]) > a:not([href]),
+body:has(main[class*="page__internal"]) .top-nav__dropdown:has(a[href*="/subtitles"]) > a:not([href]),
 
 /* User dropdown (trigger has href="/users/<username>") */
-body:has(main[class*="page__user"]) .top-nav__dropdown > a[href*="/users/"] {
+body:has(main[class*="page__user"]) .top-nav__dropdown > a[href*="/users/"],
+
+/* Right-side icon links: envelope (conversations) + bell (notifications) */
+body:has(main[class*="page__conversation"]) .top-nav--right__icon-link[href*="/conversations"],
+body:has(main[class*="page__notification"]) .top-nav--right__icon-link[href*="/notifications"] {
   color: var(--cp-yellow);
   background-color: var(--cp-surface-0);
   font-weight: 600;
